@@ -1,0 +1,92 @@
+Algoritms       (do graphs in google docs)
+
+Bit.- 1 or 0 (1 - there is electr current here/ 0 - there is no electric current here)
+
+Byte - collection of 8 1 and 0’s. - base 2 - can store numbers up to 255 in 1 byte
+
+
+Binary - used to turn info into bytes.
+
+
+Utf-8  = 1 byte - good enough if you just use English language as you can store 255 chracters.
+
+
+Each cell where bits/bytes are stored has an address so computer doesn’t have to go through each cell when retrieving some info. (One cell = 4 bytes)
+
+As long as you have the address of the data in the computer, it doesn’t matter if its at the beginning or end of the memory (consisting of cells of bytes). You point your reader at it.  That is why when you measure the time of .last [-1] , it is a constant time whether of array of 1 element or 100,000 elements.
+
+
+a= 3.                   a = @2  in memory   b = @16 in memory     (address in cells)
+b = a
+a += 1
+b = 3
+
+
+a = []
+b = a
+A<< 6
+b= [6]
+
+(In the second both a and b are both pointing to the same point in the memory)
+
+
+Arrays are similar to memory - you have addresses that you can read at constant time
+
+Ruby - dynamic arrays
+But c - you have to state size of array I.e how much memory tit takes up.
+
+
+
+
+
+If you add to an array but memory is already allocated so you can’t increase size the array must be remapped to an address where there is room. But now it’s not constant time. Remapping takes twice as long for an array twice as big because each cell must be remapped one by one.
+
+
+
+Amortised constant time
+On average adding something to array is constant Tim but there are spikes in time where remapping occurs so its amortised constant time
+
+Adding in the beginning or middle it is linear time.
+
+Therefore unshift is more costly, as it follows linear time when input size increases, whereas push (adding at end) is constant time (amortised) (as long as there is room
+
+
+Some algorithms look fine but have hidden costs e.g. by being  linear time e.g. .unshift
+
+
+
+
+
+Def shuffle(array)
+	new_array = []
+  until array.empty? do
+  random_index = rand array.length
+  new_array << array[random_index]
+  array.delete_at(random_index)
+  end
+  new_array
+	end
+
+end
+  it would be more efficient if you could specifiy the memory allocated to new_array before you execute, as otherwise the new array would keep needing to be remapped as elements are added to it.
+
+
+the delete_at line is costly bit. its a linear operation that, because it chanes the composition of the array, the array has to be remapped.
+doing a linear operation inside a loop so it makes it quadratic as there are time 2 the nuber of process going on when yo udouble the input size
+it is most costly if you delete the first element in array. the whole rest of array needs to be remapped
+the curve will be quadratic
+
+
+would be better using pop. deletes off the end and array does not have to be remapped
+
+
+so instead of delete_at line  -    array[random_index] = array.last
+                                    array.pop
+
+
+                                    knowing more about how computers work .every machine deals with processes in the same way. so it brings out the differences between e.g. pop and delete_at.
+
+
+
+for next time: write has duplicate algorithm
+compare delete at and pop.
