@@ -1,4 +1,4 @@
-
+require './algorithms/my_reverse'
 
 class TimingFramework
 
@@ -45,12 +45,12 @@ end
 
 def run_algorithm
 
-  algorithm (@array)
+  my_reverse(@array)
 
 end
 
 def save_result(run_time, step)
-  
+
 
 end
 
