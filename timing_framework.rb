@@ -1,5 +1,7 @@
 require './algorithms/my_reverse'
 require './algorithms/reverse'
+require './algorithms/my_shuffle(using delete at)'
+require './algorithms/my_shuffle(using pop)'
 
 require 'csv'
 
@@ -70,7 +72,7 @@ class TimingFramework
 
   def run_algorithm
 
-    reverse(@array)
+    shuffle(@array)
 
   end
 

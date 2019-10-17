@@ -1,4 +1,4 @@
-def shuffle(array)
+def shuffle_slow(array)
 
   new_array = []
   until array.empty? do

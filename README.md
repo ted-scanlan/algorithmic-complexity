@@ -34,4 +34,17 @@ Copy the raw data into [this spreadsheet](https://docs.google.com/spreadsheets/d
 
 ## Findings ##
 
-![picture](reverse.png)
+Reverse
+
+![picture](screenshots/reverse.png)
+
+
+
+#### Shuffle ####
+
+
+![picture](screenshots/shuffle.png)
+
+The shuffle method using the delete_at operation is way more inefficent, as it requires the array to be remapped on every iteration, therefore changing the composition of the array. The curve is quadratic because the costly operation is happening inside a loop, so there are x² the number of processes going on when you double the input size.  
+
+It is better get the element you want to delete to the end of the array, then to use the pop method. This doesnt require a remapping of the array and the time difference by making such a minor change is remarkable. 
