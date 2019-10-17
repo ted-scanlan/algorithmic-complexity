@@ -12,14 +12,14 @@ class TimingFramework
   end
 
   def run
+    time_start = Time.now
     @results = {}
     @averaged_results = {}
-
     set_up
     get_averages
-      print @results
-
-
+    save_results
+    time_end = Time.now - time_start
+    print "total time taken: #{time_end}. Please see results stored in file"
 
   end
 
@@ -38,7 +38,7 @@ def set_up
     puts "run: #{run}, step: #{step}"
      get_array(step)
      run_time = get_duration
-     save_result(run_time, step)
+     get_results(run_time, step)
   end
 end
 puts "COMPLETED"
@@ -58,7 +58,7 @@ def get_averages
     values.each do |val|
     sum += val
       end
-      sum = sum/3
+      sum = sum/(values.length)
       @averaged_results[key] = sum
     end
 
@@ -70,12 +70,24 @@ def run_algorithm
 
 end
 
-def save_result(run_time, step)
+def get_results(run_time, step)
 if @results[@step_size * step].nil?
 @results[@step_size * step] = [run_time]
 else
   @results[@step_size * step] << run_time
 end
+end
+
+def save_results
+  CSV.open('RESULTS', 'w') do |csv|
+  @averaged_results.each do |key, value|
+    csv << [key, value]
+  end
+end
+puts 'File Saved'
+end
+
+
 end
 
 
@@ -86,10 +98,3 @@ end
 #  end_time = Time.now
 #  puts "size: #{0} - #{x} Time: #{(end_time - beginning_time)*1000}"
 # end
-
-
-
-
-
-
-end
