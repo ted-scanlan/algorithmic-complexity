@@ -1,9 +1,11 @@
 def my_reverse(array)
 
   reversed_array = []
-  x.each do |num|
-    reversed_array << (x[-1])
-    x = x[0..-2]
+  array.each do |num|
+    reversed_array << (array[-1])
+    array = array[0..-2]
   end
+
+  reversed_array
 
 end
