@@ -18,7 +18,7 @@ clone this repository, then:
 cd algorithms
 ```
 
-add the algorithm that you'd like to time in to the 'run_algorithm' method on line 70 of the framework.
+add the algorithm that you'd like to time in to the 'run_algorithm' method on line 70 of the framework.  (there is already a reverse method as a default algorithm)
 then:
 
 ```
@@ -29,4 +29,9 @@ timing_framework.run
 ```
 
 then go into the RESULT file that is created in the folder.
-Copy the raw data into this spreadsheet. 
+Copy the raw data into this spreadsheet.
+
+
+## Findings ##
+
+![picture](reverse.png)
